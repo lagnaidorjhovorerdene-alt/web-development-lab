@@ -32,9 +32,12 @@
           <!-- 1-р бүлэг: Хувийн мэдээлэл -->
           <fieldset>
             <legend>Хувийн мэдээлэл</legend>
+            <label for="studentid">Оюутны код:</label><br>
+            <input type="text" id="studentid" name="studentid" placeholder="B251880027" 
+                    required minlength="6" maxlength="12" pattern="[A-Za-z0-9]{6,12}" title="6-12 тэмдэгт, зөвхөн латин үсэг ба тоо"><br><br>
 
             <label for="fullname">Овог нэр:</label><br>
-            <input type="text" id="fullname" name="fullname" placeholder="Бат Болд"
+            <input type="text" id="fullname" name="fullname" placeholder="Лагнайдорж Ховор-Эрдэнэ"
                    required minlength="2" autocomplete="name"><br><br>
 
             <label for="email">Цахим хаяг (Email):</label><br>
