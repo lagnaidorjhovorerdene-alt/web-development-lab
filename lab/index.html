@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cocoa Wear | Хувцасны дэлгүүр</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../shared.css">
+</head>
+<body>
+
+  <!-- Лабуудын шилжих цэс -->
+  <nav class="lab-switcher" aria-label="Лабораториудын цэс">
+    <a href="../index.html">🏠 Нүүр</a>
+    <a href="../lab01/index.html">Лаб 1</a>
+    <a href="../lab02/index.html">Лаб 2</a>
+    <a href="../lab03/index.html">Лаб 3</a>
+    <a class="current" href="../lab04/index.html">Лаб 4</a>
+  </nav>
+
+  <div class="page">
+
+    <!-- HEADER + NAVIGATION (Flexbox) -->
+    <header class="site-header">
+      <a class="logo" href="#">👗 <span>Cocoa Wear</span></a>
+
+      <nav aria-label="Дэлгүүрийн цэс">
+        <ul class="nav-list">
+          <li><a class="nav-link active" href="#products">Бүх бараа</a></li>
+          <li><a class="nav-link" href="#products">Эрэгтэй</a></li>
+          <li><a class="nav-link" href="#products">Эмэгтэй</a></li>
+          <li><a class="nav-link" href="#products">Хямдрал</a></li>
+        </ul>
+      </nav>
+
+      <a class="cart" href="#">
+        🛒 Сагс
+        <span class="cart-count">3</span>
+      </a>
+    </header>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <section class="widget">
+        <h2 class="widget-title">Ангилал</h2>
+        <ul class="category-list">
+          <li><a href="#products"><span>👕 Цамц</span><span class="count">24</span></a></li>
+          <li><a href="#products"><span>👖 Өмд</span><span class="count">18</span></a></li>
+          <li><a href="#products"><span>🧥 Пальто, куртик</span><span class="count">12</span></a></li>
+          <li><a href="#products"><span>👗 Даашинз</span><span class="count">15</span></a></li>
+          <li><a href="#products"><span>👟 Гутал</span><span class="count">9</span></a></li>
+          <li><a href="#products"><span>🧣 Аксессуар</span><span class="count">21</span></a></li>
+        </ul>
+      </section>
+
+      <section class="widget">
+        <h2 class="widget-title">Размер</h2>
+        <ul class="sizes">
+          <li>XS</li>
+          <li>S</li>
+          <li>M</li>
+          <li>L</li>
+          <li>XL</li>
+          <li>XXL</li>
+        </ul>
+      </section>
+
+      <section class="widget">
+        <h2 class="widget-title">Үнийн хязгаар</h2>
+        <ul class="price-list">
+          <li><a href="#products">50,000₮ хүртэл</a></li>
+          <li><a href="#products">50,000₮ – 100,000₮</a></li>
+          <li><a href="#products">100,000₮ – 200,000₮</a></li>
+          <li><a href="#products">200,000₮-өөс дээш</a></li>
+        </ul>
+      </section>
+
+      <section class="widget promo">
+        <span class="promo-badge">-30%</span>
+        <h2 class="widget-title">Намрын хямдрал</h2>
+        <p>Сонгосон бараанд 30% хүртэл хөнгөлөлт. Хугацаа хязгаарлагдмал.</p>
+      </section>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+      <section class="hero">
+        <div class="hero-text">
+          <span class="hero-tag">Намар 2026</span>
+          <h1>Шинэ цуглуулга ирлээ</h1>
+          <p>Дулаан, тухтай, загварлаг. Намрын өнгөөр өөрийн хэв маягаа бүрдүүл.</p>
+          <a class="btn btn-primary" href="#products">Дэлгүүрээр зочлох</a>
+        </div>
+        <div class="hero-art" aria-hidden="true">🧥</div>
+      </section>
+
+      <!-- БАРААНЫ КАРТНУУД: CSS GRID (3 багана) -->
+      <section id="products">
+        <h2 class="section-title">Онцлох бараанууд</h2>
+
+        <div class="product-grid">
+
+          <article class="product">
+            <div class="product-image" role="img" aria-label="Ноосон пальто">
+              <span class="product-badge sale">-20%</span>
+              🧥
+            </div>
+            <div class="product-body">
+              <p class="product-cat">Эмэгтэй</p>
+              <h3>Ноосон пальто</h3>
+              <p class="price"><strong>189,000₮</strong> <del>239,000₮</del></p>
+            </div>
+            <button class="btn-cart" type="button">Сагсанд нэмэх</button>
+          </article>
+
+          <article class="product">
+            <div class="product-image" role="img" aria-label="Cotton цамц">
+              <span class="product-badge new">Шинэ</span>
+              👕
+            </div>
+            <div class="product-body">
+              <p class="product-cat">Эрэгтэй</p>
+              <h3>Cotton цамц</h3>
+              <p class="price"><strong>45,000₮</strong></p>
+            </div>
+            <button class="btn-cart" type="button">Сагсанд нэмэх</button>
+          </article>
+
+          <article class="product">
+            <div class="product-image" role="img" aria-label="Жинсэн өмд">
+              👖
+            </div>
+            <div class="product-body">
+              <p class="product-cat">Unisex</p>
+              <h3>Жинсэн өмд</h3>
+              <p class="price"><strong>89,000₮</strong></p>
+            </div>
+            <button class="btn-cart" type="button">Сагсанд нэмэх</button>
+          </article>
+
+          <article class="product">
+            <div class="product-image" role="img" aria-label="Зуны даашинз">
+              <span class="product-badge sale">-25%</span>
+              👗
+            </div>
+            <div class="product-body">
+              <p class="product-cat">Эмэгтэй</p>
+              <h3>Зуны даашинз</h3>
+              <p class="price"><strong>99,000₮</strong> <del>129,000₮</del></p>
+            </div>
+            <button class="btn-cart" type="button">Сагсанд нэмэх</button>
+          </article>
+
+          <article class="product">
+            <div class="product-image" role="img" aria-label="Ноосон алчуур">
+              <span class="product-badge new">Шинэ</span>
+              🧣
+            </div>
+            <div class="product-body">
+              <p class="product-cat">Аксессуар</p>
+              <h3>Ноосон алчуур</h3>
+              <p class="price"><strong>35,000₮</strong></p>
+            </div>
+            <button class="btn-cart" type="button">Сагсанд нэмэх</button>
+          </article>
+
+          <article class="product">
+            <div class="product-image" role="img" aria-label="Бейсболк малгай">
+              🧢
+            </div>
+            <div class="product-body">
+              <p class="product-cat">Аксессуар</p>
+              <h3>Бейсболк малгай</h3>
+              <p class="price"><strong>25,000₮</strong></p>
+            </div>
+            <button class="btn-cart" type="button">Сагсанд нэмэх</button>
+          </article>
+
+          <article class="product">
+            <div class="product-image" role="img" aria-label="Спорт пүүз">
+              <span class="product-badge sale">-15%</span>
+              👟
+            </div>
+            <div class="product-body">
+              <p class="product-cat">Гутал</p>
+              <h3>Спорт пүүз</h3>
+              <p class="price"><strong>159,000₮</strong> <del>189,000₮</del></p>
+            </div>
+            <button class="btn-cart" type="button">Сагсанд нэмэх</button>
+          </article>
+
+          <article class="product">
+            <div class="product-image" role="img" aria-label="Арьсан цүнх">
+              👜
+            </div>
+            <div class="product-body">
+              <p class="product-cat">Эмэгтэй</p>
+              <h3>Арьсан цүнх</h3>
+              <p class="price"><strong>129,000₮</strong></p>
+            </div>
+            <button class="btn-cart" type="button">Сагсанд нэмэх</button>
+          </article>
+
+          <article class="product">
+            <div class="product-image" role="img" aria-label="Хослол">
+              <span class="product-badge new">Шинэ</span>
+              🧥
+            </div>
+            <div class="product-body">
+              <p class="product-cat">Эрэгтэй</p>
+              <h3>Куртик</h3>
+              <p class="price"><strong>139,000₮</strong></p>
+            </div>
+            <button class="btn-cart" type="button">Сагсанд нэмэх</button>
+          </article>
+
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="footer-top">
+        <div class="footer-col">
+          <h2>Cocoa Wear</h2>
+          <p>Дулаан, загварлаг хувцасны дэлгүүр.</p>
+        </div>
+
+        <div class="footer-col">
+          <h2>Тусламж</h2>
+          <ul>
+            <li><a href="#">Хүргэлт</a></li>
+            <li><a href="#">Буцаалт</a></li>
+            <li><a href="#">Размерийн хүснэгт</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h2>Холбоо барих</h2>
+          <ul>
+            <li>📞 8811-2233</li>
+            <li>✉️ info@cocoawear.mn</li>
+            <li>📍 Улаанбаатар хот</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="footer-bottom">&copy; 2026 Веб зохиомж хичээл. Бүх эрх хуулиар хамгаалагдсан.</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>

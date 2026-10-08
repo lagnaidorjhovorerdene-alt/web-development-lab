@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Лаборатори 04: Flexbox ба Grid Layout</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="page">
+
+    <!-- HEADER + NAVIGATION (Flexbox) -->
+    <header class="site-header">
+      <a class="logo" href="#">🎓 <span>IV долоо хоног</span></a>
+
+      <nav class="main-nav" aria-label="Үндсэн цэс">
+        <ul class="nav-list">
+          <li><a class="nav-link active" href="#">Нүүр</a></li>
+          <li><a class="nav-link" href="#">Хичээлүүд</a></li>
+          <li><a class="nav-link" href="#">Лабораториуд</a></li>
+          <li><a class="nav-link" href="#">Холбоо барих</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+      <section class="hero">
+        <span class="hero-badge">2026-2027 намрын улирал</span>
+        <h1>Тавтай морилно уу!</h1>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#courses">Хичээлүүд үзэх</a>
+          <a class="btn btn-ghost" href="#">Хуваарь харах</a>
+        </div>
+      </section>
+
+      <!-- CARD GRID (CSS Grid, 3 багана) -->
+      <section class="courses" id="courses">
+        <h2 class="section-title">Миний хичээлүүд</h2>
+
+        <div class="card-grid">
+          <article class="card">
+            <div class="card-icon">🌐</div>
+            <h3>Веб зохиомж</h3>
+            <p>HTML, CSS ашиглан вэб хуудасны бүтэц, загвар бүтээх.</p>
+            <span class="tag">HTML · CSS</span>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">🎨</div>
+            <h3>2D дизайн ба анимаци</h3>
+            <p>Adobe After Effects дээр хөдөлгөөнт дүрс бүтээх.</p>
+            <span class="tag">After Effects</span>
+          </article>
+
+          <article class="card">
+          <div class="card-icon">📈</div>
+          <h3>Инженерчлэлийн эдийн засаг</h3>
+          <p>Эдийн засгийн үндсэн ойлголт, зах зээл, эрэлт хэрэгцээ, нийлүүлэлтийн судалгаа.</p>
+          <span class="tag">Эдийн засаг</span>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">🤖</div>
+            <h3>Хиймэл оюун ухааны үндэс</h3>
+            <p>Python хэл дээр програмчлалын үндсийг судлах.</p>
+            <span class="tag">Python</span>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">📐</div>
+            <h3>Математик</h3>
+            <p>Програмчлалд шаардлагатай математикийн үндэс.</p>
+            <span class="tag">Тооцоо</span>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">💼</div>
+            <h3>Мэргэжлийн удиртгал</h3>
+            <p>Мэдээллийн технологийн салбар, мэргэжлийн танилцуулга.</p>
+            <span class="tag">Удиртгал</span>
+          </article>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <section class="widget">
+        <h2 class="widget-title">Оюутан</h2>
+        <div class="profile">
+          <img class="avatar" src="images/profile.jpg" alt="оюутны зураг">
+          <div>
+            <p class="profile-name">B251880027 Л.Ховор-Эрдэнэ</p>
+            <p class="profile-role">Мэдээлэл холбооны технологийн сургууль</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="widget">
+        <h2 class="widget-title">Статистик</h2>
+        <div class="stats">
+          <div class="stat">
+            <strong>5</strong>
+            <span>Хичээл</span>
+          </div>
+          <div class="stat">
+            <strong>4</strong>
+            <span>Голч</span>
+          </div>
+          <div class="stat">
+            <strong>97</strong>
+            <span>Дундаж</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="widget">
+        <h2 class="widget-title">Хичээлийн хуваарь</h2>
+        <ul class="lab-list">
+          <li><span>Лаб 2: HTML форм</span><span class="status done">Дууссан</span></li>
+          <li><span>Лаб 3: CSS</span><span class="status done">Дууссан</span></li>
+          <li><span>Лаб 4: Flex &amp; Grid</span><span class="status progress">Явагдаж байна</span></li>
+        </ul>
+      </section>
+
+    </aside>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <p>&copy; 2026 Веб зохиомж хичээл. Бүх эрх хуулиар хамгаалагдсан.</p>
+      <ul class="footer-links">
+        <li><a href="#">Нүүр</a></li>
+        <li><a href="#">Тусламж</a></li>
+        <li><a href="#">Холбоо барих: 60390302</a></li>
+      </ul>
+    </footer>
+
+  </div>
+
+</body>
+</html>
