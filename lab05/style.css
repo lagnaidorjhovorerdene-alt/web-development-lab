@@ -1,0 +1,465 @@
+/* ===== Vintage Retro — бор, хар, саарал (Mobile-First) ===== */
+:root {
+  --cream: #efe6d8;
+  --sand: #d8c7ac;
+  --tan: #b99a74;
+  --brown: #6b4a32;
+  --black: #1a1512;
+  --gray: #8a8580;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Special Elite", "Courier New", monospace;
+  color: var(--black);
+  line-height: 1.6;
+  overflow-x: hidden;
+  background-color: var(--cream);
+  background-image:
+    radial-gradient(rgba(62, 42, 28, 0.13) 1px, transparent 1px),
+    radial-gradient(rgba(62, 42, 28, 0.08) 1px, transparent 1px);
+  background-size: 18px 18px, 11px 11px;
+  background-position: 0 0, 5px 7px;
+}
+
+h1, h2, h3, .logo, .logo-foot {
+  font-family: "Abril Fatface", Georgia, serif;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+  color: var(--brown);
+  text-shadow: 2px 2px 0 var(--sand);
+}
+
+/* Хэсэг бүрийн ерөнхий зай (padding зөвхөн энд нэг удаа) */
+.block {
+  padding: 24px 16px;
+  scroll-margin-top: 80px;   /* sticky header-ийн доор харагдахын тулд */
+}
+
+/* ===== Promo bar ===== */
+.promo-bar {
+  background: var(--black);
+  color: var(--sand);
+  text-align: center;
+  font-size: 0.8rem;
+  padding: 6px 10px;
+  letter-spacing: 1px;
+}
+
+/* ===== Header + Навигаци (MOBILE) ===== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  background: var(--cream);
+  border-bottom: 4px solid var(--black);
+}
+
+.logo {
+  font-size: 1.7rem;
+  color: var(--black);
+  text-decoration: none;
+  text-shadow: 2px 2px 0 var(--sand);
+}
+.logo span, .logo-foot span { color: var(--brown); }
+
+.menu-check { display: none; }
+
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: var(--tan);
+  border: 3px solid var(--black);
+  box-shadow: 3px 3px 0 var(--black);
+  cursor: pointer;
+  padding: 8px;
+}
+.menu-toggle span {
+  display: block;
+  width: 24px;
+  height: 3px;
+  background: var(--black);
+}
+
+/* Гар утсан дээр цэс header-ийн доор унждаг самбар (хуудсыг түлхэхгүй) */
+.main-nav {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--cream);
+  border-bottom: 4px solid var(--black);
+}
+.menu-check:checked ~ .main-nav { display: block; }
+
+.main-nav ul { list-style: none; }
+.main-nav li a {
+  display: block;
+  padding: 14px 16px;
+  color: var(--black);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-top: 2px dashed var(--black);
+}
+.main-nav li a:hover { background: var(--sand); }
+
+/* Retro судал */
+.stripes {
+  height: 18px;
+  background: linear-gradient(
+    to bottom,
+    var(--brown) 0 6px,
+    var(--gray) 6px 12px,
+    var(--black) 12px 18px
+  );
+}
+
+/* ===== Hero ===== */
+.hero {
+  position: relative;
+  text-align: center;
+  padding: 40px 16px 60px;
+  background:
+    radial-gradient(circle at 50% 100%, var(--brown) 0 22%, transparent 22.5%),
+    repeating-conic-gradient(from 0deg at 50% 100%,
+      var(--tan) 0 8deg, var(--sand) 8deg 16deg);
+  border-bottom: 4px solid var(--black);
+  overflow: hidden;
+}
+.hero-box {
+  display: inline-block;
+  max-width: 100%;
+  background: var(--cream);
+  border: 4px solid var(--black);
+  box-shadow: 8px 8px 0 var(--black);
+  padding: 22px 18px;
+}
+.hero-tag {
+  display: inline-block;
+  background: var(--black);
+  color: var(--cream);
+  padding: 2px 14px;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+  font-size: 0.85rem;
+}
+.hero h1 {
+  font-size: 2rem;
+  color: var(--brown);
+  text-shadow: 3px 3px 0 var(--sand), 5px 5px 0 var(--black);
+  margin-bottom: 12px;
+}
+.hero-sub { margin-bottom: 18px; }
+
+.sticker {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  width: 68px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: var(--black);
+  color: var(--sand);
+  border: 3px dashed var(--sand);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px var(--black);
+  font-family: "Abril Fatface", Georgia, serif;
+  font-size: 0.9rem;
+  line-height: 1.1;
+  transform: rotate(14deg);
+}
+
+/* ===== Гүйдэг мөр ===== */
+.marquee {
+  overflow: hidden;
+  background: var(--black);
+  color: var(--tan);
+  white-space: nowrap;
+  padding: 8px 0;
+  letter-spacing: 3px;
+  font-size: 0.9rem;
+}
+.marquee-track {
+  display: inline-block;
+  width: max-content;
+  animation: slide 22s linear infinite;
+}
+.marquee-track span { display: inline-block; padding-right: 12px; }
+
+@keyframes slide {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ===== Товч ===== */
+.btn {
+  display: inline-block;
+  padding: 10px 22px;
+  background: var(--brown);
+  color: var(--cream);
+  border: 3px solid var(--black);
+  box-shadow: 4px 4px 0 var(--black);
+  font-family: inherit;
+  font-size: 1rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+.btn:hover {
+  background: var(--black);
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--black);
+}
+
+/* ===== Үндсэн ангилал (3 багана) ===== */
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 12px;
+}
+.cat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 14px 4px;
+  background: var(--sand);
+  border: 3px solid var(--black);
+  box-shadow: 4px 4px 0 var(--black);
+  color: var(--black);
+  text-decoration: none;
+  font-size: 0.8rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.cat span { font-size: 2rem; filter: sepia(0.7) saturate(0.8); }
+.cat:hover { background: var(--tan); }
+
+/* Зигзаг */
+.zigzag {
+  height: 14px;
+  margin: 8px 16px;
+  background:
+    linear-gradient(135deg, var(--black) 25%, transparent 25%) -7px 0,
+    linear-gradient(225deg, var(--black) 25%, transparent 25%) -7px 0;
+  background-size: 14px 14px;
+}
+
+/* ===== Ангиллын хэсэг: Эмэгтэй / Эрэгтэй / Хүүхдийн ===== */
+.cat-head {
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 4px double var(--black);
+}
+.cat-head p { color: var(--gray); text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; }
+
+/* Дэд ангилал (Хувцас / Гутал / Цүнх) */
+.subs {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+.sub-title {
+  display: inline-block;
+  margin-bottom: 14px;
+  padding: 2px 14px;
+  background: var(--black);
+  color: var(--sand);
+  font-size: 1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: 1fr;   /* MOBILE: 1 багана */
+  gap: 20px;
+}
+.product {
+  position: relative;
+  background: #f8f1e4;
+  border: 3px solid var(--black);
+  box-shadow: 6px 6px 0 var(--black);
+  padding: 12px 12px 16px;
+  text-align: center;
+}
+
+.thumb {
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.2rem;
+  border: 3px solid var(--black);
+  margin-bottom: 10px;
+}
+.c1 { background: var(--tan); }
+.c2 { background: var(--gray); }
+.c3 { background: var(--sand); }
+.c4 { background: var(--brown); }
+
+.tag {
+  position: absolute;
+  top: -10px;
+  left: -8px;
+  z-index: 2;
+  background: var(--black);
+  color: var(--sand);
+  border: 3px solid var(--black);
+  padding: 1px 10px;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  transform: rotate(-6deg);
+}
+.tag.sale { background: var(--brown); color: var(--cream); }
+
+.product h3 { font-size: 1.05rem; margin-bottom: 2px; }
+.price { color: var(--brown); font-weight: bold; }
+.price s { color: var(--gray); font-size: 0.9rem; }
+
+/* ===== Давуу тал ===== */
+.features {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+.feature {
+  text-align: center;
+  padding: 12px;
+  border: 3px dashed var(--black);
+  background: var(--sand);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+}
+.feature span { margin-right: 6px; filter: sepia(0.7); }
+
+/* ===== Мэдээлэл авах ===== */
+.ticket {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 420px;
+  margin-top: 8px;
+  background: #f8f1e4;
+  border: 4px dashed var(--black);
+  padding: 16px;
+}
+label { text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; }
+input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  border: 3px solid var(--black);
+  background: var(--cream);
+  font: inherit;
+  color: var(--black);
+}
+input[type="email"]:focus { outline: none; background: #fff; border-color: var(--brown); }
+.ticket .btn { align-self: flex-start; margin-top: 6px; }
+
+/* ===== Footer ===== */
+.site-footer {
+  text-align: center;
+  padding: 0 0 22px;
+  margin-top: 16px;
+  background: var(--black);
+  color: var(--sand);
+}
+.site-footer .stripes { margin-bottom: 18px; }
+.logo-foot { font-size: 1.5rem; }
+.site-footer .logo-foot span { color: var(--tan); }
+
+/* ============================================================
+   TABLET: 600px-аас дээш
+   ============================================================ */
+@media (min-width: 600px) {
+  .block { padding: 28px 28px; }
+  .zigzag { margin: 8px 28px; }
+  .hero { padding: 54px 28px 80px; }
+  .hero h1 { font-size: 2.6rem; }
+  .sticker { width: 92px; height: 92px; font-size: 1.15rem; top: 18px; right: 22px; }
+
+  .cat { font-size: 1rem; padding: 18px 8px; }
+  .products { grid-template-columns: repeat(2, 1fr); gap: 18px; }   /* 2 багана */
+  .features { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ============================================================
+   DESKTOP: 992px-аас дээш
+   ============================================================ */
+@media (min-width: 992px) {
+  .site-header { padding: 12px 48px; }
+
+  /* ☰ нуугдаж, цэс хэвтээ мөр болно */
+  .menu-toggle { display: none; }
+  .main-nav {
+    display: block;
+    position: static;
+    background: none;
+    border: none;
+  }
+  .main-nav ul { display: flex; gap: 4px; }
+  .main-nav li a { border-top: none; padding: 8px 12px; }
+
+  main { max-width: 1150px; margin: 0 auto; }
+  .block { padding: 36px 32px; }
+  .zigzag { margin: 8px 32px; }
+
+  .hero { padding: 90px 48px 120px; }
+  .hero h1 { font-size: 3.4rem; }
+  .hero-box { padding: 32px 48px; }
+  .sticker { width: 120px; height: 120px; font-size: 1.5rem; right: 8%; top: 30px; }
+
+  .cat-grid { max-width: 700px; gap: 20px; }
+
+  /* Ангиллын хэсэг: зүүн талд гарчиг, баруун талд 3 дэд ангилал */
+  .cat-section {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  .cat-head { border-bottom: none; border-right: 4px double var(--black); padding: 0 16px 0 0; margin: 0; }
+
+  .subs { grid-template-columns: repeat(3, 1fr); gap: 24px; }   /* Хувцас | Гутал | Цүнх */
+  .products { grid-template-columns: 1fr; }                      /* дэд ангилал дотор 1 багана */
+}
+
+/* Маш жижиг дэлгэц (≤ 360px) */
+@media (max-width: 360px) {
+  .hero h1 { font-size: 1.6rem; }
+  .logo { font-size: 1.4rem; }
+  .promo-bar { font-size: 0.7rem; }
+  .sticker { width: 56px; height: 56px; font-size: 0.75rem; }
+  .cat { font-size: 0.7rem; letter-spacing: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
