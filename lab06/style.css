@@ -1,0 +1,453 @@
+/* =====================================================================
+   Лаб 6 — Retro Closet Lookbook
+   1) Design tokens (custom properties) + dark mode
+   2) Суурь, header, hero
+   3) Gallery: hover/focus, 3D flip card, stagger animation
+   4) Видео, iframe
+   5) Responsive (Лаб 5-ын үргэлжлэл)
+   6) prefers-reduced-motion
+   ===================================================================== */
+
+/* ---------- 1. DESIGN TOKENS ---------- */
+:root {
+  /* өнгө (light) */
+  --bg: #efe6d8;
+  --surface: #f8f1e4;
+  --text: #1a1512;
+  --muted: #6b5a4c;
+  --accent: #6b4a32;
+  --accent-2: #b99a74;
+  --on-accent: #efe6d8;
+  --border: #1a1512;
+  --focus: #0b57d0;
+
+  /* зай, хэмжээ, хөдөлгөөн */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 40px;
+  --radius: 0;
+  --shadow: 6px 6px 0 var(--border);
+  --dur: 0.3s;
+  --dur-flip: 0.7s;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  color-scheme: light;
+}
+
+/* Dark mode — товчоор (data-theme="dark") */
+:root[data-theme="dark"] {
+  --bg: #17120e;
+  --surface: #241c16;
+  --text: #f1e7d6;
+  --muted: #c3b4a0;
+  --accent: #d8b48a;
+  --accent-2: #8a6a4e;
+  --on-accent: #17120e;
+  --border: #d8c7ac;
+  --focus: #8ab4ff;
+  color-scheme: dark;
+}
+
+/* JavaScript ажиллахгүй үед хөтөчийн тохиргоог дагана */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]):not([data-theme="dark"]) {
+    --bg: #17120e;
+    --surface: #241c16;
+    --text: #f1e7d6;
+    --muted: #c3b4a0;
+    --accent: #d8b48a;
+    --accent-2: #8a6a4e;
+    --on-accent: #17120e;
+    --border: #d8c7ac;
+    --focus: #8ab4ff;
+    color-scheme: dark;
+  }
+}
+
+/* ---------- 2. СУУРЬ ---------- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Special Elite", "Courier New", monospace;
+  color: var(--text);
+  background-color: var(--bg);
+  background-image: radial-gradient(color-mix(in srgb, var(--border) 14%, transparent) 1px, transparent 1px);
+  background-size: 18px 18px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background-color var(--dur), color var(--dur);
+}
+
+h1, h2, h3, .logo, .logo-foot {
+  font-family: "Abril Fatface", Georgia, serif;
+  font-weight: 400;
+  line-height: 1.2;
+}
+h2 { font-size: 1.6rem; color: var(--accent); margin-bottom: var(--space-2); }
+
+.block { padding: var(--space-3) var(--space-2); scroll-margin-top: 80px; }
+
+/* Хүртээмж: гарын товчлуураар явахад харагдах focus */
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-1);
+  top: -60px;
+  z-index: 100;
+  padding: var(--space-1) var(--space-2);
+  background: var(--text);
+  color: var(--bg);
+}
+.skip-link:focus { top: var(--space-1); }
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px var(--space-2);
+  background: var(--bg);
+  border-bottom: 4px solid var(--border);
+}
+
+.logo {
+  order: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.5rem;
+  color: var(--text);
+  text-decoration: none;
+}
+.logo span, .logo-foot span { color: var(--accent); }
+.logo-icon { color: var(--text); flex-shrink: 0; }
+
+.menu-check { display: none; }
+
+.header-actions {
+  order: 3;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: var(--accent-2);
+  border: 3px solid var(--border);
+  padding: 8px;
+  cursor: pointer;
+}
+.menu-toggle span { display: block; width: 22px; height: 3px; background: var(--text); }
+.menu-check:focus-visible ~ .header-actions .menu-toggle {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+/* Гар утсан дээр цэс header-ийн доор унждаг самбар */
+.main-nav {
+  order: 2;
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--bg);
+  border-bottom: 4px solid var(--border);
+}
+.menu-check:checked ~ .main-nav { display: block; }
+
+.main-nav ul { list-style: none; }
+.main-nav a {
+  display: block;
+  padding: 14px var(--space-2);
+  color: var(--text);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-top: 2px dashed var(--border);
+  transition: background-color var(--dur);
+}
+.main-nav a:hover { background: var(--accent-2); }
+
+.stripes {
+  height: 18px;
+  background: linear-gradient(to bottom,
+    var(--accent) 0 6px, var(--accent-2) 6px 12px, var(--border) 12px 18px);
+}
+
+/* ---------- Товч ---------- */
+.btn {
+  display: inline-block;
+  padding: 10px 22px;
+  background: var(--accent);
+  color: var(--on-accent);
+  border: 3px solid var(--border);
+  box-shadow: 4px 4px 0 var(--border);
+  font-family: inherit;
+  font-size: 1rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.btn:hover,
+.btn:focus-visible {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--border);
+}
+.btn.small { padding: 6px 12px; font-size: 0.8rem; box-shadow: 3px 3px 0 var(--border); }
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  text-align: center;
+  padding: var(--space-4) var(--space-2);
+  background: repeating-conic-gradient(from 0deg at 50% 100%,
+    var(--accent-2) 0 8deg, color-mix(in srgb, var(--accent-2) 70%, var(--bg)) 8deg 16deg);
+  border-bottom: 4px solid var(--border);
+  overflow: hidden;
+}
+.hero-box {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  max-width: 100%;
+  padding: 22px var(--space-2);
+  background: var(--bg);
+  border: 4px solid var(--border);
+  box-shadow: 8px 8px 0 var(--border);
+}
+.hero-tag {
+  display: inline-block;
+  margin-bottom: var(--space-1);
+  padding: 2px 14px;
+  background: var(--border);
+  color: var(--bg);
+  letter-spacing: 3px;
+  font-size: 0.85rem;
+}
+.hero h1 { font-size: 2.2rem; color: var(--accent); margin-bottom: var(--space-1); }
+.hero-box p:not(.hero-tag) { margin-bottom: var(--space-2); }
+
+/* Чимэглэлийн одод — @keyframes spin / float */
+.hero-star {
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  color: var(--accent);
+  opacity: 0.85;
+  animation: spin 14s linear infinite;
+}
+.star-a { top: 14px; left: 12px; }
+.star-b { bottom: 14px; right: 12px; width: 40px; height: 40px; animation-direction: reverse; }
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ---------- 3. GALLERY ---------- */
+.grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;          /* mobile: 1 багана */
+  gap: 28px;
+  margin-top: var(--space-2);
+}
+
+/* Stagger: --i (0,1,2...) утгаар animation-delay нэмэгдэнэ */
+.item {
+  max-width: 340px;
+  width: 100%;
+  margin-inline: auto;
+  animation: rise 0.6s var(--ease) both;
+  animation-delay: calc(var(--i, 0) * 120ms);
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(28px) rotate(-1deg); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Flip card: button бүхэлдээ карт. perspective = гүнзгийрүүлэлт */
+.flip {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  cursor: pointer;
+  perspective: 1000px;
+  transition: transform var(--dur) var(--ease);
+}
+/* Hover/focus эффект: transform + transition */
+.flip:hover,
+.flip:focus-visible {
+  transform: translateY(-6px) scale(1.02);
+}
+
+.flip-inner {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;        /* хүүхдүүд нь 3D орчинд үлдэнэ */
+  transition: transform var(--dur-flip) var(--ease);
+}
+.flip.is-flipped .flip-inner { transform: rotateY(180deg); }
+
+.face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--surface);
+  border: 3px solid var(--border);
+  box-shadow: var(--shadow);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;         /* эргэсэн нүүрийг нуух */
+}
+
+.front img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.caption {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 2px 12px;
+  background: var(--border);
+  color: var(--bg);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+}
+
+.back {
+  transform: rotateY(180deg);          /* урд нь эргэсэн байрлалтай */
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-2);
+  text-align: center;
+  background: var(--accent);
+  color: var(--on-accent);
+}
+.back-title { font-family: "Abril Fatface", Georgia, serif; font-size: 1.4rem; }
+.back-price { margin-top: var(--space-1); padding: 2px 12px; border: 2px dashed currentColor; }
+
+.zigzag {
+  height: 14px;
+  margin: var(--space-1) var(--space-2);
+  background:
+    linear-gradient(135deg, var(--border) 25%, transparent 25%) -7px 0,
+    linear-gradient(225deg, var(--border) 25%, transparent 25%) -7px 0;
+  background-size: 14px 14px;
+}
+
+/* ---------- 4. ВИДЕО БА IFRAME ---------- */
+.media-grid { display: grid; grid-template-columns: 1fr; }
+
+figure {
+  max-width: 420px;
+  margin-inline: auto;
+  padding: var(--space-1);
+  background: var(--surface);
+  border: 3px solid var(--border);
+  box-shadow: var(--shadow);
+}
+video { display: block; width: 100%; height: auto; background: #000; }
+figcaption { padding-top: var(--space-1); color: var(--muted); font-size: 0.85rem; }
+
+iframe {
+  display: block;
+  width: 100%;
+  height: 320px;
+  border: 3px solid var(--border);
+  box-shadow: var(--shadow);
+  background: var(--surface);
+}
+.map-link { margin-top: var(--space-2); }
+.map-link a { color: var(--accent); }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  margin-top: var(--space-2);
+  padding: 0 0 22px;
+  text-align: center;
+  background: var(--border);
+  color: var(--bg);
+}
+.site-footer .stripes { margin-bottom: 18px; }
+.logo-foot { font-size: 1.5rem; }
+.site-footer .logo-foot span { color: var(--accent-2); }
+
+/* ---------- 5. RESPONSIVE ---------- */
+@media (min-width: 600px) {
+  .block { padding: 28px; }
+  .hero { padding: 56px 28px; }
+  .hero h1 { font-size: 2.8rem; }
+  .hero-star { width: 80px; height: 80px; }
+  .grid { grid-template-columns: repeat(2, 1fr); }     /* tablet: 2 багана */
+  .item { max-width: none; }
+  iframe { height: 360px; }
+}
+
+@media (min-width: 992px) {
+  .site-header { padding: 12px 48px; }
+  .menu-toggle { display: none; }
+  .main-nav {
+    display: block;
+    position: static;
+    background: none;
+    border: 0;
+  }
+  .main-nav ul { display: flex; gap: 4px; }
+  .main-nav a { border-top: 0; padding: 8px 14px; }
+
+  main { max-width: 1150px; margin: 0 auto; }
+  .block { padding: 36px 32px; }
+  .grid { grid-template-columns: repeat(3, 1fr); gap: 32px; }   /* desktop: 3 багана */
+  .hero { padding: 80px 48px; }
+  .hero h1 { font-size: 3.4rem; }
+
+  .media-grid { grid-template-columns: 1fr 1fr; align-items: start; }
+  figure { margin-inline: 0; }
+}
+
+@media (max-width: 360px) {
+  .logo { font-size: 1.2rem; }
+  .hero h1 { font-size: 1.8rem; }
+  .btn.small { padding: 6px 8px; font-size: 0.7rem; }
+}
+
+/* ---------- 6. ХӨДӨЛГӨӨНИЙГ ХЯЗГААРЛАХ ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0s !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .flip:hover,
+  .flip:focus-visible { transform: none; }
+}

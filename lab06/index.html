@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retro Closet — Lookbook цомог</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Special+Elite&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <a href="#gallery" class="skip-link">Үндсэн агуулга руу очих</a>
+
+  <header class="site-header">
+    <a href="#top" class="logo">
+      <!-- Inline SVG: утга учиртай дүрс тул role="img" + title -->
+      <svg class="logo-icon" viewBox="0 0 40 40" role="img" aria-labelledby="logo-title" width="32" height="32">
+        <title id="logo-title">Retro Closet-ийн лого</title>
+        <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="3"/>
+        <path d="M20 7 L23.5 16 L33 16.5 L25.5 22.5 L28 32 L20 26.5 L12 32 L14.5 22.5 L7 16.5 L16.5 16 Z" fill="var(--accent)"/>
+      </svg>
+      Retro<span>Closet</span>
+    </a>
+
+    <!-- Гар утасны цэс: checkbox + label (зөвхөн CSS) -->
+    <input type="checkbox" id="menu-check" class="menu-check">
+
+    <div class="header-actions">
+      <button type="button" class="btn small" id="themeBtn" aria-pressed="false">🌙 Харанхуй</button>
+      <label for="menu-check" class="menu-toggle" aria-label="Цэс нээх">
+        <span></span><span></span><span></span>
+      </label>
+    </div>
+
+    <nav class="main-nav" aria-label="Үндсэн цэс">
+      <ul>
+        <li><a href="#top">Нүүр</a></li>
+        <li><a href="#gallery">Цомог</a></li>
+        <li><a href="#video">Видео</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="stripes"></div>
+
+  <main id="top">
+
+    <section class="hero">
+      <!-- Чимэглэлийн SVG: дэлгэцийн уншигчид хэрэггүй тул aria-hidden -->
+      <svg class="hero-star star-a" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+        <path d="M50 5 L61 38 L96 38 L68 58 L79 92 L50 71 L21 92 L32 58 L4 38 L39 38 Z" fill="currentColor"/>
+      </svg>
+      <svg class="hero-star star-b" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+        <path d="M50 5 L61 38 L96 38 L68 58 L79 92 L50 71 L21 92 L32 58 L4 38 L39 38 Z" fill="currentColor"/>
+      </svg>
+
+      <div class="hero-box">
+        <p class="hero-tag">★ Lookbook ★</p>
+        <h1>Зургийн цомог</h1>
+        <p>Картыг дарж эргүүлээд тайлбарыг нь харна уу.</p>
+        <a href="#gallery" class="btn">Цомог үзэх</a>
+      </div>
+    </section>
+
+    <!-- ===== Gallery: 3D flip card ===== -->
+    <section id="gallery" class="block">
+      <h2>Цомог</h2>
+      <ul class="grid">
+
+        <li class="item" style="--i:0">
+          <button type="button" class="flip" aria-pressed="false">
+            <span class="flip-inner">
+              <span class="face front">
+              <img src="img/photo1.jpg" alt="зураг" width="600" height="800" loading="lazy">
+                <span class="caption">LOOK 01</span>
+              </span>
+              <span class="face back">
+                <span class="back-title">Аав</span>
+                <span class="back-text">Д.Лагнайдорж</span>
+                <span class="back-price">43 настай</span>
+              </span>
+            </span>
+          </button>
+        </li>
+
+        <li class="item" style="--i:1">
+          <button type="button" class="flip" aria-pressed="false">
+            <span class="flip-inner">
+              <span class="face front">
+                <img src="img/photo2.jpg" alt="зураг" width="600" height="800" loading="lazy">
+                <span class="caption">LOOK 02</span>
+              </span>
+              <span class="face back">
+                <span class="back-title">Ээж</span>
+                <span class="back-text">Л. Юмжирдулам</span>
+                <span class="back-price">41 настай</span>
+              </span>
+            </span>
+          </button>
+        </li>
+
+        <li class="item" style="--i:2">
+          <button type="button" class="flip" aria-pressed="false">
+            <span class="flip-inner">
+              <span class="face front">
+                <img src="img/photo3.jpg" alt="зураг" width="600" height="800" loading="lazy">
+                <span class="caption">LOOK 03</span>
+              </span>
+              <span class="face back">
+                <span class="back-title">Том охин</span>
+                <span class="back-text">Л. Ховор-Эрдэнэ</span>
+                <span class="back-price">19 настай</span>
+              </span>
+            </span>
+          </button>
+        </li>
+
+        <li class="item" style="--i:3">
+          <button type="button" class="flip" aria-pressed="false">
+            <span class="flip-inner">
+              <span class="face front">
+                <img src="img/photo4.jpg" alt="зураг" width="600" height="800" loading="lazy">
+                <span class="caption">LOOK 04</span>
+              </span>
+              <span class="face back">
+                <span class="back-title">Дунд охин</span>
+                <span class="back-text">Л. Бямба-Эрдэнэ</span>
+                <span class="back-price">17 настай</span>
+              </span>
+            </span>
+          </button>
+        </li>
+
+        <li class="item" style="--i:4">
+          <button type="button" class="flip" aria-pressed="false">
+            <span class="flip-inner">
+              <span class="face front">
+                <img src="img/photo5.jpg" alt="зураг" width="600" height="800" loading="lazy">
+                <span class="caption">LOOK 05</span>
+              </span>
+              <span class="face back">
+                <span class="back-title"></span>
+                <span class="back-text">Бага охин</span>
+                <span class="back-text">Л. Бүжинлхам</span>
+                <span class="back-price">10 настай</span>
+              </span>
+            </span>
+          </button>
+        </li>
+
+        <li class="item" style="--i:5">
+          <button type="button" class="flip" aria-pressed="false">
+            <span class="flip-inner">
+              <span class="face front">
+                <img src="img/photo6.jpg" alt="зураг" width="600" height="800" loading="lazy">
+                <span class="caption">LOOK 06</span>
+              </span>
+              <span class="face back">
+                <span class="back-title">Бага хүү</span>
+                <span class="back-text">Л. Жаргалбаяр</span>
+                <span class="back-price">5 настай</span>
+              </span>
+            </span>
+          </button>
+        </li>
+
+      </ul>
+    </section>
+
+    <div class="zigzag"></div>
+
+    <!-- ===== Видео ба газрын зураг ===== -->
+    <div class="media-grid">
+
+      <section id="video" class="block">
+        <h2>Видео</h2>
+        <figure>
+          <!-- autoplay байхгүй, controls байгаа, нэр (caption) орсон -->
+          <video controls preload="metadata" playsinline poster="img/photo1.jpg" width="480" height="640">
+            <source src="video/clip.webm" type="video/webm">
+            <source src="video/clip.mp4" type="video/mp4">
+            <track kind="captions" srclang="mn" label="Монгол" src="video/clip.mn.vtt" default>
+            <p>Таны хөтөч видеог дэмжихгүй байна. <a href="video/clip.mp4">Видеог татаж авах</a>.</p>
+          </video>
+          <figcaption>Гэр бүлийн видео.</figcaption>
+        </figure>
+      </section>
+      <section id="map" class="block">
+        <h2>Байршил</h2>
+        <iframe
+          title="Retro Closet-ийн байршил: Улаанбаатар хотын газрын зураг"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=106.89%2C47.90%2C106.95%2C47.94&layer=mapnik&marker=47.9184%2C106.9177"
+          loading="lazy"
+          referrerpolicy="no-referrer"
+          sandbox="allow-scripts allow-same-origin"></iframe>
+          <p class="map-link">
+          <a href="https://www.openstreetmap.org/?mlat=47.9184&mlon=106.9177#map=14/47.9184/106.9177">Газрын зургийг том харах</a>
+          </p>
+      </section>
+
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="stripes"></div>
+    <p class="logo-foot">Зургийн<span>Цомог</span></p>
+    <p>&copy; 2026 Лаб 6</p>
+  </footer>
+
+</body>
+</html>
