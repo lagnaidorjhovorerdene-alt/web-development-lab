@@ -1,0 +1,14 @@
+{
+  "name": "retro-closet-lab7",
+  "version": "1.0.0",
+  "description": "Retro Closet — Lab 7: SCSS refactor of Lab 6",
+  "private": true,
+  "scripts": {
+    "build": "sass scss/main.scss css/style.css --style=compressed --no-source-map",
+    "build:dev": "sass scss/main.scss css/style.css --style=expanded --source-map",
+    "watch": "sass --watch scss/main.scss css/style.css --style=expanded --source-map"
+  },
+  "devDependencies": {
+    "sass": "^1.80.0"
+  }
+}

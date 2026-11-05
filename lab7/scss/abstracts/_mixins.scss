@@ -1,0 +1,44 @@
+@use "sass:map";
+@use "tokens" as *;
+
+// Media query: @include respond(sm) { ... }
+@mixin respond($key) {
+  $width: map.get($breakpoints, $key);
+  @if not $width {
+    @error "Мэдэгдээгүй breakpoint: #{$key}";
+  }
+  @media (min-width: $width) {
+    @content;
+  }
+}
+
+// Жижиг дэлгэц: @include respond-down(xs) { ... }
+@mixin respond-down($key) {
+  @media (max-width: map.get($breakpoints, $key)) {
+    @content;
+  }
+}
+
+// Төвлөрүүлсэн flex
+@mixin flex-center($direction: row, $gap: 0) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: center;
+  justify-content: center;
+  @if $gap != 0 {
+    gap: $gap;
+  }
+}
+
+// Map-ийг CSS custom property болгон гаргах
+@mixin emit-vars($map) {
+  @each $name, $value in $map {
+    --#{$name}: #{$value};
+  }
+}
+
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}

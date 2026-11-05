@@ -1,0 +1,79 @@
+@use "../abstracts" as *;
+
+@keyframes pop {
+  from { opacity: 0; transform: scale(.85) rotate(-3deg); }
+  to   { opacity: 1; transform: none; }
+}
+
+.hero {
+  position: relative;
+  text-align: center;
+  padding: 40px 16px 60px;
+  overflow: hidden;
+  border-bottom: 4px solid var(--ink);
+  background:
+    radial-gradient(circle at 50% 100%, var(--brown) 0 22%, transparent 22.5%),
+    repeating-conic-gradient(from 0deg at 50% 100%, var(--tan) 0 8deg, var(--sand) 8deg 16deg);
+
+  @include respond(sm) { padding: 54px 28px 80px; }
+  @include respond(lg) { padding: 90px 48px 120px; }
+
+  &__box {
+    display: inline-block;
+    max-width: 100%;
+    padding: 22px 18px;
+    background: var(--bg);
+    border: 4px solid var(--ink);
+    box-shadow: 8px 8px 0 var(--ink);
+    animation: pop .8s var(--ease) both;
+
+    @include respond(lg) { padding: 32px 48px; }
+  }
+
+  &__tag {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 2px 14px;
+    font-size: rem(13.6);
+    letter-spacing: 3px;
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  &__title {
+    margin-bottom: 12px;
+    font-size: rem(32);
+    color: var(--brown);
+    text-shadow: 3px 3px 0 var(--sand), 5px 5px 0 var(--ink);
+
+    @include respond(sm) { font-size: rem(41.6); }
+    @include respond(lg) { font-size: rem(54.4); }
+    @include respond-down(xs) { font-size: rem(25.6); }
+  }
+
+  &__sub { margin-bottom: 18px; }
+
+  &__sticker {
+    @include flex-center;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+    width: 68px;
+    height: 68px;
+    text-align: center;
+    font-family: "Abril Fatface", Georgia, serif;
+    font-size: rem(14.4);
+    line-height: 1.1;
+    background: var(--ink);
+    color: var(--sand);
+    border: 3px dashed var(--sand);
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px var(--ink);
+    transform: rotate(14deg);
+
+    @include respond(sm) { width: 92px; height: 92px; font-size: rem(18.4); top: 18px; right: 22px; }
+    @include respond(lg) { width: 120px; height: 120px; font-size: rem(24); top: 30px; right: 8%; }
+    @include respond-down(xs) { width: 56px; height: 56px; font-size: rem(12); }
+  }
+}

@@ -1,0 +1,32 @@
+@use "../abstracts" as *;
+
+.features {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+
+  @include respond(sm) { grid-template-columns: repeat(3, 1fr); }
+
+  &__item {
+    font-size: rem(14.4);
+    @include flex-center(row, 10px);
+    padding: 14px;
+    border: 3px dashed var(--ink);
+    background: var(--sand);
+    color: var(--ink);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    &:hover .features__icon {
+      transform: rotate(-12deg) scale(1.15);
+    }
+  }
+
+  &__icon {
+    width: rem(40);
+    height: rem(40);
+    color: var(--brown);
+    transition: transform .4s var(--ease);
+  }
+}

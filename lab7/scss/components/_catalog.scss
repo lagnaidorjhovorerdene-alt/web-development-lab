@@ -1,0 +1,61 @@
+@use "../abstracts" as *;
+
+// Ангиллын хэсэг: Эмэгтэй / Эрэгтэй / Хүүхдийн
+.catalog {
+  @include respond(lg) {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+
+  &__head {
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 4px double var(--ink);
+
+    @include respond(lg) {
+      margin: 0;
+      padding: 0 16px 0 0;
+      border-bottom: none;
+      border-right: 4px double var(--ink);
+    }
+  }
+
+  &__note {
+    font-size: rem(12.8);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gray);
+  }
+
+  &__subs {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+
+    @include respond(lg) { grid-template-columns: repeat(3, 1fr); }
+  }
+}
+
+.subcat {
+  &__title {
+    display: inline-block;
+    margin-bottom: 14px;
+    padding: 2px 14px;
+    font-size: rem(16);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: var(--ink);
+    color: var(--sand);
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+
+    @include respond(sm) { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    @include respond(lg) { grid-template-columns: 1fr; }
+  }
+}

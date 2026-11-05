@@ -1,0 +1,42 @@
+@use "../abstracts" as *;
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 12px;
+
+  @include respond(lg) {
+    max-width: 700px;
+    gap: 20px;
+  }
+
+  &__item {
+    @include flex-center(column, 4px);
+    padding: 14px 4px;
+    font-size: rem(12.8);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: var(--ink);
+    background: var(--sand);
+    border: 3px solid var(--ink);
+    box-shadow: 4px 4px 0 var(--ink);
+    transition: background-color .25s, transform .2s var(--ease);
+
+    &:hover,
+    &:focus-visible {
+      background: var(--tan);
+      transform: translateY(-3px);
+    }
+
+    @include respond(sm) { font-size: rem(16); padding: 18px 8px; }
+    @include respond-down(xs) { font-size: rem(11.2); letter-spacing: 0; }
+  }
+
+  &__icon {
+    font-size: rem(32);
+    filter: sepia(.7) saturate(.8);
+  }
+}

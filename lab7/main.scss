@@ -1,0 +1,24 @@
+// Retro Closet — Лаб 7: Лаб 5 (дизайн) + Лаб 6 (animation, dark mode, multimedia)-г SCSS болгон refactor хийсэн
+
+@use "base/reset";
+@use "base/root";
+@use "base/typography";
+
+@use "layout/section";
+@use "layout/promo";
+@use "layout/header";
+@use "layout/hero";
+@use "layout/marquee";
+@use "layout/footer";
+
+@use "components/button";
+@use "components/category";
+@use "components/catalog";
+@use "components/product";
+@use "components/card";
+@use "components/media";
+@use "components/features";
+@use "components/form";
+
+@use "utilities/utilities";
+@use "utilities/motion";

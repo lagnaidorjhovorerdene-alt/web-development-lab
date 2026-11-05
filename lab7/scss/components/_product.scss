@@ -1,0 +1,64 @@
+@use "../abstracts" as *;
+
+$product-tones: ("tan", "gray", "sand", "brown");
+
+.product {
+  position: relative;
+  padding: 12px 12px 16px;
+  text-align: center;
+  background: var(--surface);
+  border: 3px solid var(--ink);
+  box-shadow: 6px 6px 0 var(--ink);
+  transition: transform .25s var(--ease), box-shadow .25s var(--ease);
+
+  &:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0 var(--ink);
+  }
+
+  &__thumb {
+    @include flex-center;
+    height: 110px;
+    margin-bottom: 10px;
+    font-size: rem(51.2);
+    border: 3px solid var(--ink);
+
+    @each $tone in $product-tones {
+      &--#{$tone} { background: var(--#{$tone}); }
+    }
+  }
+
+  &__tag {
+    position: absolute;
+    top: -10px;
+    left: -8px;
+    z-index: 2;
+    padding: 1px 10px;
+    font-size: rem(12.8);
+    letter-spacing: 1px;
+    background: var(--ink);
+    color: var(--sand);
+    border: 3px solid var(--ink);
+    transform: rotate(-6deg);
+
+    &--sale {
+      background: var(--brown);
+      color: var(--on-accent);
+    }
+  }
+
+  &__name {
+    margin-bottom: 2px;
+    font-size: rem(16.8);
+  }
+
+  &__price {
+    font-weight: bold;
+    color: var(--brown);
+
+    s {
+      font-size: rem(14.4);
+      color: var(--gray);
+    }
+  }
+}

@@ -1,0 +1,32 @@
+@use "sass:map";
+@use "../abstracts" as *;
+
+// Брэндийн өнгө: .u-swatch-tan гэх мэт (фон + автомат contrast текст)
+@each $name, $value in $brand {
+  .u-swatch-#{$name} {
+    background: $value;
+    color: contrast($value);
+  }
+}
+
+// Зай: .u-mt-1 … .u-mt-5, .u-mb-*, .u-p-*
+@each $key, $px in $spacing {
+  .u-mt-#{$key} { margin-top: rem($px); }
+  .u-mb-#{$key} { margin-bottom: rem($px); }
+  .u-p-#{$key}  { padding: rem($px); }
+}
+
+// Радиус: .u-radius-sm, .u-radius-pill
+@each $name, $value in $radius {
+  .u-radius-#{$name} { border-radius: $value; }
+}
+
+.u-text-center { text-align: center; }
+.u-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

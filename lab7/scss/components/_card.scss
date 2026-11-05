@@ -1,0 +1,95 @@
+@use "../abstracts" as *;
+
+$card-tones: ("tan", "gray", "sand", "brown");
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.gallery {
+  max-width: 900px;
+  margin: 0 auto;
+  gap: 20px;
+  /* ... uldsen n hevээr */
+}
+
+.card__inner { height: 200px; /* ... */ }
+
+.card__face img {
+  width: 100%;
+  height: 120px;
+  object-fit: contain;
+  background: #fff;
+}
+
+.card {
+  perspective: 900px;
+  // --i нь HTML дээр style="--i:N" гэж өгөгдөнө
+  animation: rise .7s var(--ease) both;
+  animation-delay: calc(var(--i, 0) * 120ms);
+
+  &__inner {
+    position: relative;
+    height: 240px;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform var(--dur) var(--ease);
+  }
+
+  &--flipped &__inner {
+    transform: rotateY(180deg);
+  }
+
+  @media (hover: hover) {
+    &:not(.card--flipped):hover &__inner {
+      transform: rotateY(12deg) translateY(-4px);
+    }
+  }
+
+  &__face {
+    @include flex-center(column, 6px);
+    position: absolute;
+    inset: 0;
+    padding: 14px;
+    text-align: center;
+    border: var(--border) solid var(--ink);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+    &--back {
+      background: var(--surface);
+      transform: rotateY(180deg);
+    }
+
+    // @each-ээр өнгөний modifier үүсгэнэ
+    @each $tone in $card-tones {
+      &--#{$tone} { background: var(--#{$tone}); }
+    }
+    &--brown h3 { color: var(--on-accent); }
+
+    img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+  }
+
+  &__emoji {
+    font-size: rem(64);
+    filter: sepia(.6);
+  }
+
+  &__price {
+    font-size: rem(19.2);
+    font-weight: bold;
+    color: var(--brown);
+  }
+
+  &__btn {
+    display: block;
+    margin: 14px auto 0;
+  }
+}

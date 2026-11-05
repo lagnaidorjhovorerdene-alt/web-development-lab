@@ -1,0 +1,18 @@
+@use "../abstracts" as *;
+
+.site-footer {
+  margin-top: 16px;
+  padding: 0 0 22px;
+  text-align: center;
+  background: var(--ink);
+  color: var(--sand);
+
+  .stripes { margin-bottom: 18px; }
+
+  &__logo {
+    font-family: "Abril Fatface", Georgia, serif;
+    font-size: rem(24);
+
+    span { color: var(--ink-accent); }
+  }
+}

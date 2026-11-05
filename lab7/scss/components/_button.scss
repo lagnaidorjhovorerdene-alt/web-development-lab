@@ -1,0 +1,32 @@
+@use "../abstracts" as *;
+
+.btn {
+  font: inherit;
+  font-size: rem(15.2);
+  cursor: pointer;
+  padding: 8px 18px;
+  background: var(--brown);
+  color: var(--on-accent);
+  border: var(--border) solid var(--ink);
+  border-radius: var(--radius-sm);
+  box-shadow: 4px 4px 0 var(--ink);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: transform .2s var(--ease), box-shadow .2s var(--ease), background-color .2s;
+
+  &:hover,
+  &:focus-visible {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--ink);
+  }
+
+  &:active {
+    transform: translate(4px, 4px) scale(.97);
+    box-shadow: 0 0 0 var(--ink);
+  }
+
+  &--small {
+    padding: 6px 12px;
+    font-size: rem(12.8);
+  }
+}

@@ -1,0 +1,113 @@
+@use "../abstracts" as *;
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  background: var(--bg);
+  border-bottom: 4px solid var(--ink);
+
+  @include respond(lg) { padding: 12px 48px; }
+
+  &__logo {
+    font-family: "Abril Fatface", Georgia, serif;
+    font-size: rem(27.2);
+    color: var(--ink);
+    text-decoration: none;
+    text-shadow: 2px 2px 0 var(--sand);
+
+    span { color: var(--brown); }
+
+    @include respond-down(xs) { font-size: rem(22.4); }
+  }
+
+  &__actions {
+    @include flex-center(row, 10px);
+    @include respond(lg) { order: 2; }
+  }
+
+  // Checkbox нуугдсан ч Tab-аар сонгогдоно
+  &__check {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+
+    &:focus-visible ~ .site-header__actions .site-header__toggle {
+      outline: 4px solid var(--focus);
+      outline-offset: 3px;
+    }
+  }
+
+  &__toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 8px;
+    cursor: pointer;
+    background: var(--tan);
+    border: 3px solid var(--ink);
+    box-shadow: 3px 3px 0 var(--ink);
+
+    span {
+      display: block;
+      width: 24px;
+      height: 3px;
+      background: var(--ink);
+    }
+
+    @include respond(lg) { display: none; }
+  }
+
+  &__nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--bg);
+    border-bottom: 4px solid var(--ink);
+
+    @include respond(lg) {
+      display: block;
+      position: static;
+      order: 1;
+      background: none;
+      border: none;
+    }
+  }
+
+  &__check:checked ~ &__nav { display: block; }
+
+  &__list {
+    list-style: none;
+
+    @include respond(lg) {
+      display: flex;
+      gap: 4px;
+    }
+  }
+
+  &__link {
+    display: block;
+    padding: 14px 16px;
+    color: var(--ink);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-top: 2px dashed var(--ink);
+
+    &:hover,
+    &:focus-visible { background: var(--sand); }
+
+    @include respond(lg) {
+      padding: 8px 12px;
+      border-top: none;
+    }
+  }
+}

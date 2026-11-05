@@ -1,0 +1,61 @@
+// Design tokens: өнгө, радиус, зай, breakpoint
+$colors-light: (
+  "bg":        #efe6d8,
+  "surface":   #f8f1e4,
+  "sand":      #d8c7ac,
+  "tan":       #b99a74,
+  "brown":     #6b4a32,
+  "ink":       #1a1512,
+  "gray":      #8a8580,
+  "on-accent": #efe6d8,
+  "focus":     #b3261e,
+  "ink-accent": #b99a74,
+  "dot-1":     rgba(62, 42, 28, .13),
+  "dot-2":     rgba(62, 42, 28, .08),
+);
+
+$colors-dark: (
+  "bg":        #1a1512,
+  "surface":   #2a221c,
+  "sand":      #4a3b2e,
+  "tan":       #b99a74,
+  "brown":     #d9b48a,
+  "ink":       #efe6d8,
+  "gray":      #a39d96,
+  "on-accent": #1a1512,
+  "focus":     #ffb4a8,
+  "ink-accent": #6b4a32,
+  "dot-1":     rgba(239, 230, 216, .07),
+  "dot-2":     rgba(239, 230, 216, .04),
+);
+
+// Брэндийн тогтмол өнгө (theme-ээс хамаарахгүй) — utility класст ашиглана
+$brand: (
+  "tan":   #b99a74,
+  "brown": #6b4a32,
+  "sand":  #d8c7ac,
+  "gray":  #8a8580,
+  "ink":   #1a1512,
+);
+
+$radius: (
+  "sm":   0,
+  "md":   0,
+  "pill": 999px,
+);
+
+$spacing: (
+  1: 4,
+  2: 8,
+  3: 16,
+  4: 24,
+  5: 32,
+);
+
+$breakpoints: (
+  "sm": 600px,
+  "lg": 992px,
+  "xs": 360px,
+);
+
+$base-font-size: 16;

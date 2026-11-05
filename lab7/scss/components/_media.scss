@@ -1,0 +1,26 @@
+@use "../abstracts" as *;
+
+%framed {
+  max-width: 640px;
+  border: 4px solid var(--ink);
+  box-shadow: 8px 8px 0 var(--ink);
+}
+
+.video {
+  @extend %framed;
+  display: block;
+  width: 100%;
+  background: #000;
+}
+
+.map {
+  @extend %framed;
+  aspect-ratio: 16 / 9;
+
+  &__frame {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+}

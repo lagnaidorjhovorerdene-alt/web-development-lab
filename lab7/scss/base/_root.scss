@@ -1,0 +1,19 @@
+@use "sass:map";
+@use "../abstracts" as *;
+
+:root {
+  @include emit-vars($colors-light);
+
+  @each $name, $value in $radius {
+    --radius-#{$name}: #{$value};
+  }
+
+  --border: 3px;
+  --shadow: 6px 6px 0 var(--ink);
+  --dur: 0.6s;
+  --ease: cubic-bezier(.4, .2, .2, 1);
+}
+
+[data-theme="dark"] {
+  @include emit-vars($colors-dark);
+}

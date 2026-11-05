@@ -1,0 +1,12 @@
+@use "../abstracts" as *;
+
+.promo-bar {
+  padding: 6px 10px;
+  text-align: center;
+  font-size: rem(12.8);
+  letter-spacing: 1px;
+  background: var(--ink);
+  color: var(--sand);
+
+  @include respond-down(xs) { font-size: rem(11.2); }
+}
