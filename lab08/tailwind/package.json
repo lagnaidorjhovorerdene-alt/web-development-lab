@@ -1,0 +1,1 @@
+{"name":"retro-closet-lab8-original-tailwind","private":true,"scripts":{"build":"tailwindcss -i ./src/input.css -o ./dist/output.css --minify","watch":"tailwindcss -i ./src/input.css -o ./dist/output.css --watch"},"devDependencies":{"tailwindcss":"^4.1.0","@tailwindcss/cli":"^4.1.0"}}

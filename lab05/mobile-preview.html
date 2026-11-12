@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="mn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Retro Closet — Mobile Preview</title>
+
+    <style>
+      /* ===== ҮНДСЭН ХУУДАС ===== */
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        padding: 40px 16px;
+
+        background: #e9e5df;
+        font-family: Arial, sans-serif;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      h1 {
+        margin-bottom: 10px;
+        font-size: 28px;
+        text-align: center;
+      }
+
+      p {
+        margin-bottom: 30px;
+        color: #555;
+        text-align: center;
+      }
+
+      /* ===== УТАСНЫ ХҮРЭЭ ===== */
+
+      .phone {
+        width: 390px;
+        max-width: 100%;
+
+        padding: 12px;
+        border: 7px solid #171717;
+        border-radius: 42px;
+
+        background: #171717;
+
+        box-shadow:
+          0 20px 45px rgba(0, 0, 0, 0.25);
+      }
+
+      /* ===== УТАСНЫ ДЭЭД ХЭСЭГ ===== */
+
+      .phone-top {
+        height: 26px;
+
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+      }
+
+      .camera {
+        width: 95px;
+        height: 18px;
+
+        background: #050505;
+        border-radius: 0 0 15px 15px;
+      }
+
+      /* ===== УТАСНЫ ДЭЛГЭЦ ===== */
+
+      .phone-screen {
+        width: 100%;
+        height: 650px;
+
+        overflow: hidden;
+
+        background: white;
+        border-radius: 12px;
+      }
+
+      /* ===== IFRAME ===== */
+
+      .phone-screen iframe {
+        display: block;
+
+        width: 100%;
+        height: 100%;
+
+        border: none;
+      }
+
+      /* ===== УТАСНЫ ДООД ХЭСЭГ ===== */
+
+      .phone-bottom {
+        height: 30px;
+
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+      }
+
+      .home-indicator {
+        width: 100px;
+        height: 5px;
+
+        background: #666;
+        border-radius: 10px;
+      }
+
+      /* ===== БУЦАХ ТОВЧ ===== */
+
+      .back-btn {
+        margin-top: 25px;
+        padding: 12px 24px;
+
+        background: #6b4a32;
+        color: white;
+
+        text-decoration: none;
+        border-radius: 8px;
+
+        transition: background 0.3s;
+      }
+
+      .back-btn:hover {
+        background: #3d291c;
+      }
+
+      /* ===== RESPONSIVE ===== */
+
+      @media (max-width: 450px) {
+        body {
+          padding: 20px 8px;
+        }
+
+        h1 {
+          font-size: 22px;
+        }
+
+        .phone {
+          border-width: 5px;
+          padding: 8px;
+        }
+
+        .phone-screen {
+          height: 600px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>📱 Mobile Preview</h1>
+
+    <p>
+      Retro Closet веб сайтын гар утасны хувилбар
+    </p>
+
+    <!-- Утасны загвар -->
+    <div class="phone">
+
+      <!-- Утасны дээд хэсэг -->
+      <div class="phone-top">
+        <div class="camera"></div>
+      </div>
+
+      <!-- Утасны дэлгэц -->
+      <div class="phone-screen">
+
+        <iframe
+          src="index.html"
+          title="Retro Closet гар утасны хувилбар"
+          loading="eager"
+        ></iframe>
+
+      </div>
+
+      <!-- Утасны доод хэсэг -->
+      <div class="phone-bottom">
+        <div class="home-indicator"></div>
+      </div>
+
+    </div>
+
+    <!-- Буцах товч -->
+    <a href="index.html" class="back-btn">
+      ← Веб сайт руу буцах
+    </a>
+
+  </body>
+</html>
